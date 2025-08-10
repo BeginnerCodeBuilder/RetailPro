@@ -1,0 +1,85 @@
+{
+  "name": "Sale",
+  "type": "object",
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "description": "Customer ID (optional for walk-in sales)"
+    },
+    "items": {
+      "type": "array",
+      "description": "Array of sold items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "string"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "unit_price": {
+            "type": "number"
+          },
+          "total_price": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "subtotal": {
+      "type": "number",
+      "description": "Subtotal before tax and discounts"
+    },
+    "tax_amount": {
+      "type": "number",
+      "description": "Tax amount applied"
+    },
+    "discount_amount": {
+      "type": "number",
+      "default": 0,
+      "description": "Discount amount applied"
+    },
+    "total_amount": {
+      "type": "number",
+      "description": "Final total amount"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "cash",
+        "card",
+        "mobile",
+        "loyalty_points"
+      ],
+      "description": "Payment method used"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "pending",
+        "failed"
+      ],
+      "default": "completed",
+      "description": "Payment status"
+    },
+    "receipt_number": {
+      "type": "string",
+      "description": "Receipt number for tracking"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes for the sale"
+    }
+  },
+  "required": [
+    "items",
+    "subtotal",
+    "total_amount",
+    "payment_method"
+  ]
+}

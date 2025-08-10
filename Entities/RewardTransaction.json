@@ -1,0 +1,57 @@
+{
+  "name": "RewardTransaction",
+  "type": "object",
+  "properties": {
+    "rewards_id": {
+      "type": "string",
+      "description": "10-digit reward transaction ID"
+    },
+    "customer_id": {
+      "type": "string",
+      "description": "Customer ID"
+    },
+    "order_id": {
+      "type": "string",
+      "description": "Related order ID"
+    },
+    "points": {
+      "type": "integer",
+      "description": "Points earned or used (negative for usage)"
+    },
+    "equivalent_amount": {
+      "type": "number",
+      "description": "Peso equivalent based on conversion rate"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Earned",
+        "Used",
+        "Expired",
+        "Reversed"
+      ],
+      "description": "Transaction type"
+    },
+    "conversion_rate": {
+      "type": "number",
+      "default": 1,
+      "description": "Points to peso conversion rate at time of transaction"
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When points expire"
+    },
+    "expiry_duration": {
+      "type": "integer",
+      "default": 180,
+      "description": "Days from earn date to expiry"
+    }
+  },
+  "required": [
+    "customer_id",
+    "points",
+    "type",
+    "conversion_rate"
+  ]
+}

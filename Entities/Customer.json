@@ -1,0 +1,82 @@
+{
+  "name": "Customer",
+  "type": "object",
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "description": "Auto-generated format: C-YYYYMMDD-####"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "Customer first name"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Customer last name"
+    },
+    "mobile": {
+      "type": "string",
+      "description": "Philippine mobile format: 09xxxxxxxxx"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address"
+    },
+    "address": {
+      "type": "string",
+      "description": "Customer address"
+    },
+    "source": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "SMS",
+          "Walk-In",
+          "FB Chat"
+        ]
+      },
+      "description": "Customer acquisition source"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "VIP",
+        "Gold",
+        "Silver",
+        "Wholesaler"
+      ],
+      "default": "Silver",
+      "description": "Customer type"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Inactive",
+        "Blacklisted"
+      ],
+      "default": "Active",
+      "description": "Customer status"
+    },
+    "loyalty_points": {
+      "type": "integer",
+      "default": 0,
+      "description": "Active loyalty points"
+    },
+    "lifetime_sales": {
+      "type": "number",
+      "default": 0,
+      "description": "Total lifetime purchase value"
+    },
+    "lifetime_orders": {
+      "type": "integer",
+      "default": 0,
+      "description": "Total number of orders"
+    }
+  },
+  "required": [
+    "first_name",
+    "mobile"
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "order_id": {
+      "type": "string",
+      "description": "Auto-generated format: O-YYYYMMDD-####"
+    },
+    "customer_id": {
+      "type": "string",
+      "description": "Customer ID or null for walk-in"
+    },
+    "order_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Order timestamp"
+    },
+    "items": {
+      "type": "array",
+      "description": "Order line items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "unit_price": {
+            "type": "number"
+          },
+          "subtotal": {
+            "type": "number"
+          },
+          "discount": {
+            "type": "number",
+            "default": 0
+          }
+        }
+      }
+    },
+    "subtotal": {
+      "type": "number",
+      "description": "Items subtotal before tax and discounts"
+    },
+    "discount_amount": {
+      "type": "number",
+      "default": 0,
+      "description": "Total discount applied"
+    },
+    "shipping_fee": {
+      "type": "number",
+      "default": 0,
+      "description": "Shipping/delivery fee"
+    },
+    "vat_amount": {
+      "type": "number",
+      "description": "VAT amount (configurable rate)"
+    },
+    "total_amount": {
+      "type": "number",
+      "description": "Final total amount"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "Cash",
+        "GCash",
+        "Bank Transfer",
+        "Split Payment"
+      ],
+      "description": "Payment method used"
+    },
+    "reference_number": {
+      "type": "string",
+      "description": "Payment reference number"
+    },
+    "bank_name": {
+      "type": "string",
+      "description": "Bank name for bank transfers"
+    },
+    "or_number": {
+      "type": "string",
+      "description": "Official receipt number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Hold",
+        "Paid",
+        "Returned",
+        "Partially Returned",
+        "Void"
+      ],
+      "default": "Hold",
+      "description": "Order status"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Order notes or remarks"
+    },
+    "processed_by": {
+      "type": "string",
+      "description": "Staff/cashier who processed the order"
+    }
+  },
+  "required": [
+    "items",
+    "subtotal",
+    "total_amount",
+    "payment_method",
+    "status"
+  ]
+}

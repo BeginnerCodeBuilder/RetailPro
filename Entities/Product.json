@@ -1,0 +1,68 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "sku": {
+      "type": "string",
+      "description": "Stock keeping unit - 6 digits starting with group ID"
+    },
+    "price": {
+      "type": "number",
+      "description": "Unit selling price"
+    },
+    "cost": {
+      "type": "number",
+      "description": "Unit cost price"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "beverages",
+        "food",
+        "electronics",
+        "clothing",
+        "accessories",
+        "health",
+        "home",
+        "other"
+      ],
+      "default": "other",
+      "description": "Product category/group"
+    },
+    "current_stock": {
+      "type": "integer",
+      "description": "Current stock quantity"
+    },
+    "reorder_level": {
+      "type": "integer",
+      "default": 10,
+      "description": "Minimum stock threshold"
+    },
+    "barcode": {
+      "type": "string",
+      "description": "Product barcode"
+    },
+    "description": {
+      "type": "string",
+      "description": "Product description"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Product status"
+    }
+  },
+  "required": [
+    "name",
+    "price",
+    "current_stock"
+  ]
+}
